@@ -10,9 +10,17 @@ This repository contains the code examples shown in the [GDG event "OpenAI is Op
 - [gpt-oss: How to Run & Fine-tune - Tutorial](https://docs.unsloth.ai/basics/gpt-oss-how-to-run-and-fine-tune)
 - [gpt-oss playground](https://gpt-oss.com/)
 
-## Agent Example 🚀
+## Agent Examples 🚀
 
-The `agent/main.py` file demonstrates how to create a simple agent using OpenAI's `gpt-oss-120b` model from Cerebras via Hugging Face. The agent is capable of performing tasks such as calculating sums and retrieving the current time. It uses the Agents SDK and integrates tools for enhanced functionality.
+This repository includes two different agent implementations using OpenAI's `gpt-oss-120b` model from Cerebras via Hugging Face:
+
+### Agent with OpenAI SDK (`agent_openai_sdk`)
+
+The `agent_openai_sdk/main.py` demonstrates how to create a simple agent using the Agents SDK. The agent is capable of performing tasks such as calculating sums and retrieving the current time, utilizing function tools for enhanced functionality.
+
+### Agent with Google ADK (`agent_google_adk`)
+
+The `agent_google_adk/main.py` shows how to implement the same functionality using Google's Agents Development Kit (ADK). This implementation provides an alternative approach to building agents with similar capabilities.
 
 ### How to Run
 
@@ -28,13 +36,19 @@ git clone https://github.com/Shekswess/openai-is-open-ai-again.git
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-3. Navigate to the `agent` directory
+3. Navigate to either agent directory
 
 ```bash
-cd openai-is-open-ai-again/agent
+# For OpenAI SDK implementation
+cd openai-is-open-ai-again/agent_openai_sdk
+
+# OR for Google ADK implementation  
+cd openai-is-open-ai-again/agent_google_adk
 ```
 
-4. Run the agent
+4. Set up your environment variables (create a `.env` file with your HuggingFace token)
+
+5. Run the agent
 
 ```bash
 uv run main.py
@@ -69,19 +83,30 @@ The `local_inference/run_gpt_oss_20b_on_colab.ipynb` notebook demonstrates how t
 2. Install the required dependencies.
 3. Load the model and run inference with custom prompts.
 
+## Presentation 📊
+
+The `presentation/gpt-oss.pdf` contains the slides from the GDG event "OpenAI is Open AI Again" held on September 02, 2025, providing an overview of the topics covered and the examples demonstrated.
+
 ## Repository Structure 🗂
 
 ```
 .
-├── agent
+├── agent_google_adk/
 │   ├── .python-version
 │   ├── main.py
 │   ├── pyproject.toml
 │   └── uv.lock
-├── finetuning
+├── agent_openai_sdk/
+│   ├── .python-version
+│   ├── main.py
+│   ├── pyproject.toml
+│   └── uv.lock
+├── finetuning/
 │   └── gpt_oss_20b_fine_tuning_unsloth.ipynb
-├── local_inference
+├── local_inference/
 │   └── run_gpt_oss_20b_on_colab.ipynb
+├── presentation/
+│   └── gpt-oss.pdf
 ├── LICENSE
 └── README.md
 ```
